@@ -3,6 +3,8 @@ import morgan from 'morgan'
 import 'dotenv/config'
 import mongoose from 'mongoose'
 
+import authRouter from './controllers/auth.js'
+
 const app = express()
 const port = process.env.PORT
 
@@ -12,7 +14,7 @@ app.use(morgan('dev'))
 
 
 // * Routers
-
+app.use('/api', authRouter)
 
 // * 404 Route
 app.use('/{*app}', (req, res) => {
