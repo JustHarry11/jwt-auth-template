@@ -5,10 +5,14 @@ export default function errorHandler(err, res) {
     // * ValidationError
     if (name === "ValidationError"){
         const fields = Object.keys(err.errors)
-        const responseBody = fields.reduce((obj, field) => {
-            obj[field] = err.errors[field].message
-            return obj
-        }, {})
+        // const responseBody = fields.reduce((obj, field) => {
+        //     obj[field] = err.errors[field].message
+        //     return obj
+        // }, {})
+        const responseBody = {}
+        fields.forEach(field => {
+            responseBody[field] = err.errors[field].message
+        })
         return res.status(422).json(responseBody)
     }
     

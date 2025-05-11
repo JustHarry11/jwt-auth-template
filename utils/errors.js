@@ -8,3 +8,13 @@ export class UnprocessableEntity extends Error {
         this.field = field
     }
 }
+
+
+export class Unauthorized extends Error {
+    constructor(message = "Unauthorized"){
+        super(message)
+        this.name = "Unauthorized"
+        this.status = 401
+        this.field = "message"
+    }
+}

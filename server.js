@@ -19,6 +19,10 @@ app.use(morgan('dev'))
 app.use('/api', authRouter)
 
 
+app.get('/api/test-route', (req, res) => {
+    return res.json('HIT TEST ROUTE')
+})
+
 // * 404 Route
 app.use('/{*app}', (req, res) => {
     return res.status(404).json({ message: 'Route not found'})
