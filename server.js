@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 
 import authRouter from './controllers/auth.js'
 import errorHandler from './middleware/errorHandler.js'
+import isSignedIn from './middleware/isSignedIn.js'
 
 const app = express()
 const port = process.env.PORT
@@ -19,8 +20,9 @@ app.use(morgan('dev'))
 app.use('/api', authRouter)
 
 
-app.get('/api/test-route', (req, res) => {
-    return res.json('HIT TEST ROUTE')
+app.get('/api/test-route', isSignedIn, (req, res) => {
+    console.log('USER INSIDE THE FINAL CONTROLLER', req.user)
+    return res.json(req.user)
 })
 
 // * 404 Route
