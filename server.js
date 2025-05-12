@@ -4,7 +4,6 @@ import 'dotenv/config'
 import mongoose from 'mongoose'
 
 import authRouter from './controllers/auth.js'
-import errorHandler from './middleware/errorHandler.js'
 import isSignedIn from './middleware/isSignedIn.js'
 
 const app = express()
